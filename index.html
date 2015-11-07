@@ -8,17 +8,28 @@
       <link href="http://sebastianm.github.io/angular2-google-maps/index.xml" rel="alternate" type="application/rss+xml" title="angular2-google-maps - Google maps directives for Angular2" />
   
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+      <link rel="stylesheet" href="http://sebastianm.github.io/angular2-google-maps/css/main.css">
   </head>
   <body lang="en">
   
 <nav>
-  <div class="nav-wrapper blue-grey darken-3">
-    <a href="#" class="brand-logo" style="padding-left: 20px">angular2-google-maps</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="">Home</a></li>
-      <li><a href="getting-started/">Getting Started</a></li>
-      <li><a href="api/">API Docs</a></li>
-    </ul>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper blue-grey darken-3">
+        <a href="#" class="brand-logo" style="padding-left: 20px">angular2-google-maps</a>
+        <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="http://sebastianm.github.io/angular2-google-maps/">Home</a></li>
+          <li><a href="http://sebastianm.github.io/angular2-google-maps/getting-started/">Getting Started</a></li>
+          <li><a href="http://sebastianm.github.io/angular2-google-maps/api/">API Docs</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-nav">
+          <li><a href="http://sebastianm.github.io/angular2-google-maps/">Home</a></li>
+          <li><a href="http://sebastianm.github.io/angular2-google-maps/getting-started/">Getting Started</a></li>
+          <li><a href="http://sebastianm.github.io/angular2-google-maps/api/">API Docs</a></li>
+      </ul>
+      </div>
+    </nav>
   </div>
 </nav>
 
@@ -28,47 +39,49 @@
       <br><br>
       <h1 class="header center blue-grey-text darken-1">angular2-google-maps</h1>
       <div class="row center">
-        <h5 class="header col s12 light">Angular2 Components for the Google Maps API v3</h5>
+        <h5 class="header col s12 light">Angular2 Directives for the Google Maps API v3</h5>
       </div>
       <div class="row center">
-        <a href="getting-started/" class="btn-large waves-effect waves-light red lighten-1">Getting Started</a>
+        <a href="http://sebastianm.github.io/angular2-google-maps/getting-started/" class="btn-large waves-effect waves-light red lighten-1">Getting Started</a>
       </div>
       <div class="row center">
-        <a href="https://github.com/SebastianM/angular2-google-maps" class="btn waves-effect waves-light blue-grey darken-1">Source on Github</a>  <a href="https://groups.google.com/forum/#!forum/angular2-google-maps" class="btn waves-effect waves-light blue-grey darken-1">Forum</a> <a href="api/" class="btn waves-effect waves-light blue-grey darken-1">API Docs</a>
+        <a href="https://github.com/SebastianM/angular2-google-maps" class="btn waves-effect waves-light blue-grey darken-1">Source on Github</a>  <a href="https://groups.google.com/forum/#!forum/angular2-google-maps" class="btn waves-effect waves-light blue-grey darken-1">Forum</a> <a href="http://sebastianm.github.io/angular2-google-maps/api/" class="btn waves-effect waves-light blue-grey darken-1">API Docs</a>
       </div>
       <br><br>
 
     </div>
   </div>      
   
-  
-<footer class="page-footer blue-grey darken-3">
-  <div class="container">
-    <div class="row">
-      <div class="col l6 s12">
-        <p class="grey-text text-lighten-4">
-          Licensed under the MIT License (MIT)<br />
-          See more details here: <a href="https://github.com/SebastianM/angular2-google-maps">LICENSE.md</a>
-        </p>
+      <footer class="page-footer blue-grey darken-3">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <p class="grey-text text-lighten-4">
+              Licensed under the MIT License (MIT)<br />
+              See more details here: <a href="https://github.com/SebastianM/angular2-google-maps">LICENSE.md</a>
+            </p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="https://github.com/SebastianM/angular2-google-maps">Github</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://groups.google.com/forum/#!forum/angular2-google-maps">Forum</a></li>
+              <li><a href="https://gitter.im/SebastianM/angular2-google-maps"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/SebastianM/angular2-google-maps"></a></li>
+              <li><a href="https://travis-ci.org/SebastianM/angular2-google-maps"><img src="https://travis-ci.org/SebastianM/angular2-google-maps.svg" alt="Build Status"></a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="col l4 offset-l2 s12">
-        <h5 class="white-text">Links</h5>
-        <ul>
-          <li><a class="grey-text text-lighten-3" href="https://github.com/SebastianM/angular2-google-maps">Github</a></li>
-          <li><a class="grey-text text-lighten-3" href="https://groups.google.com/forum/#!forum/angular2-google-maps">Forum</a></li>
-          <li><a href="https://gitter.im/SebastianM/angular2-google-maps"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/SebastianM/angular2-google-maps"></a></li>
-          <li><a href="https://travis-ci.org/SebastianM/angular2-google-maps"><img src="https://travis-ci.org/SebastianM/angular2-google-maps.svg" alt="Build Status"></a></li>
-        </ul>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2015 Sebastian Müller
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="footer-copyright">
-    <div class="container">
-    © 2015 Sebastian Müller
-    </div>
-  </div>
-</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
-
+    </footer>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
   </body>
 </html>
