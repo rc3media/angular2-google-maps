@@ -5,21 +5,29 @@
     <link>http://sebastianm.github.io/angular2-google-maps/</link>
     <description>Recent content on angular2-google-maps - Google maps directives for Angular2</description>
     <generator>Hugo -- gohugo.io</generator>
-    
-    
-    
-    <lastBuildDate>Mon, 01 Jan 0001 00:00:00 UTC</lastBuildDate>
     <atom:link href="http://sebastianm.github.io/angular2-google-maps/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title></title>
       <link>http://sebastianm.github.io/angular2-google-maps/api/directives/sebm-google-map/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://sebastianm.github.io/angular2-google-maps/api/directives/sebm-google-map/</guid>
       <description>
 
 &lt;h1 id=&#34;das-ist-cool:4fdf50f62a82c87b9e88f21a627ba88d&#34;&gt;Das ist cool&lt;/h1&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://sebastianm.github.io/angular2-google-maps/getting-started/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://sebastianm.github.io/angular2-google-maps/getting-started/</guid>
+      <description>
+
+&lt;h1 id=&#34;getting-started:b6885e1f85551f51a4707c402f8200a3&#34;&gt;Getting started&lt;/h1&gt;
 </description>
     </item>
     
