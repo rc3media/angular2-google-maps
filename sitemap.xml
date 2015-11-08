@@ -14,4 +14,8 @@
     <loc>http://sebastianm.github.io/angular2-google-maps/getting-started/</loc>
   </url>
   
+  <url>
+    <loc>http://sebastianm.github.io/angular2-google-maps/api/components_directives/sebmGoogleMap/</loc>
+  </url>
+  
 </urlset>

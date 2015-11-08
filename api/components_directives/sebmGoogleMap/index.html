@@ -2,11 +2,11 @@
 <html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
   <head>
       <meta charset="utf-8">
-      <title>angular2-google-maps - Google maps directives for Angular2 - angular2-google-maps</title>
+      <title>SebmGoogleMap - angular2-google-maps</title>
       <base href="http://sebastianm.github.io/angular2-google-maps/">
-      <meta name="description" content="">
-      <link rel="canonical" href="http://sebastianm.github.io/angular2-google-maps/">
-      <link href="http://sebastianm.github.io/angular2-google-maps/index.xml" rel="alternate" type="application/rss+xml" title="angular2-google-maps - Google maps directives for Angular2" />
+      <meta name="description" content="SebMGoogleMap renders a Google Map.">
+      <link rel="canonical" href="http://sebastianm.github.io/angular2-google-maps/api/components_directives/sebmGoogleMap/">
+      <link href="" rel="alternate" type="application/rss+xml" title="angular2-google-maps - Google maps directives for Angular2" />
   
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -48,23 +48,95 @@
 </nav>
 
 
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <br><br>
-      <h1 class="header center blue-grey-text darken-1">angular2-google-maps</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">Angular2 Directives for the Google Maps API v3</h5>
-      </div>
-      <div class="row center">
-        <a href="http://sebastianm.github.io/angular2-google-maps/getting-started/" class="btn-large waves-effect waves-light red lighten-1">Getting Started</a>
-      </div>
-      <div class="row center">
-        <a href="https://github.com/SebastianM/angular2-google-maps" class="btn waves-effect waves-light blue-grey darken-1">Source on Github</a>  <a href="https://groups.google.com/forum/#!forum/angular2-google-maps" class="btn waves-effect waves-light blue-grey darken-1">Forum</a> <a href="http://sebastianm.github.io/angular2-google-maps/api/" class="btn waves-effect waves-light blue-grey darken-1">API Docs</a>
-      </div>
-      <br><br>
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <div class="col s12">
+        <article>
+          <h1>SebmGoogleMap</h1>
+          
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title grey-text text-darken-4">Description</span>
+              <p>SebMGoogleMap renders a Google Map.</p>
+            </div>
+          </div>
+          
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title grey-text text-darken-4"><i class="material-icons">call_made</i> CSS Selector</span>
+              <p><code></code></p>
+            </div>
+          </div>
+          
+          
+          
+          
 
+<h2 id="css-selector:1d20b80e8fb09d9d7430221023c052ad">CSS Selector</h2>
+
+<pre><code class="language-css">sebm-google-map
+</code></pre>
+
+<h2 id="usage:1d20b80e8fb09d9d7430221023c052ad">Usage</h2>
+
+<pre><code class="language-typescript">import {SebmGoogleMap} from 'angular2_google_maps/angular2_google_maps'};
+</code></pre>
+
+<pre><code class="language-html">&lt;sebm-google-map [latitude]=&quot;lat&quot; [longitude]=&quot;lng&quot; [zoom]=&quot;zoom&quot;&gt;
+&lt;/sebm-google-map&gt;
+</code></pre>
+
+<h2 id="bindings:1d20b80e8fb09d9d7430221023c052ad">Bindings</h2>
+
+<table>
+<thead>
+<tr>
+<th>HTML Attribute Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>latitude</td>
+<td>number</td>
+<td>yes</td>
+<td>0</td>
+<td>The latitude for the center of the map</td>
+</tr>
+
+<tr>
+<td>longitude</td>
+<td>number</td>
+<td>yes</td>
+<td>0</td>
+<td>The longitude for the center of the map</td>
+</tr>
+
+<tr>
+<td>zoom</td>
+<td>number</td>
+<td>no</td>
+<td>8</td>
+<td>The initial zoom level of the map</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="events:1d20b80e8fb09d9d7430221023c052ad">Events</h2>
+
+<p>None</p>
+
+          
+        </article>
+      </div>
     </div>
-  </div>      
+  </div>
+ </div>
   
       <footer class="page-footer blue-grey darken-3">
       <div class="container">
@@ -98,5 +170,4 @@
     <script src="js/main.js"></script>
   </body>
 </html>
-  </body>
-</html>
+
