@@ -277,6 +277,11 @@ a img{
     padding-bottom: 24px;
   }
 
+.mdl-menu a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .angular2-google-maps-card-container {
 }
 
