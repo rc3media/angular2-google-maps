@@ -18,6 +18,15 @@
     </item>
     
     <item>
+      <title>Angular2 Google Maps</title>
+      <link>http://sebastianm.github.io/angular2-google-maps/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://sebastianm.github.io/angular2-google-maps/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Getting started</title>
       <link>http://sebastianm.github.io/angular2-google-maps/getting-started/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -192,75 +201,21 @@
 
 &lt;h3 id=&#34;events:702244f91fa43959b65f80946457d311&#34;&gt;Events&lt;/h3&gt;
 
-&lt;p&gt;None&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>test</title>
-      <link>http://sebastianm.github.io/angular2-google-maps/api/services/test/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://sebastianm.github.io/angular2-google-maps/api/services/test/</guid>
-      <description>
-
-&lt;h2 id=&#34;css-selector:b128b7694e4de962e0088bcb1bcb254f&#34;&gt;CSS Selector&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;sebm-google-map
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;usage:b128b7694e4de962e0088bcb1bcb254f&#34;&gt;Usage&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;import {SebmGoogleMap} from &#39;angular2_google_maps/angular2_google_maps&#39;};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;sebm-google-map [latitude]=&amp;quot;lat&amp;quot; [longitude]=&amp;quot;lng&amp;quot; [zoom]=&amp;quot;zoom&amp;quot;&amp;gt;
-&amp;lt;/sebm-google-map&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;bindings:b128b7694e4de962e0088bcb1bcb254f&#34;&gt;Bindings&lt;/h2&gt;
-
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th&gt;HTML Attribute Name&lt;/th&gt;
-&lt;th&gt;Type&lt;/th&gt;
-&lt;th&gt;Required&lt;/th&gt;
-&lt;th&gt;Default&lt;/th&gt;
+&lt;th&gt;Event name&lt;/th&gt;
 &lt;th&gt;Description&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;latitude&lt;/td&gt;
-&lt;td&gt;number&lt;/td&gt;
-&lt;td&gt;yes&lt;/td&gt;
-&lt;td&gt;0&lt;/td&gt;
-&lt;td&gt;The latitude for the center of the map&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;longitude&lt;/td&gt;
-&lt;td&gt;number&lt;/td&gt;
-&lt;td&gt;yes&lt;/td&gt;
-&lt;td&gt;0&lt;/td&gt;
-&lt;td&gt;The longitude for the center of the map&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;zoom&lt;/td&gt;
-&lt;td&gt;number&lt;/td&gt;
-&lt;td&gt;no&lt;/td&gt;
-&lt;td&gt;8&lt;/td&gt;
-&lt;td&gt;The initial zoom level of the map&lt;/td&gt;
+&lt;td&gt;markerClick&lt;/td&gt;
+&lt;td&gt;Gets triggered when the user clicks the marker on the map&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-
-&lt;h2 id=&#34;events:b128b7694e4de962e0088bcb1bcb254f&#34;&gt;Events&lt;/h2&gt;
-
-&lt;p&gt;None&lt;/p&gt;
 </description>
     </item>
     

@@ -148,7 +148,21 @@
 
 &lt;h3 id=&#34;events:702244f91fa43959b65f80946457d311&#34;&gt;Events&lt;/h3&gt;
 
-&lt;p&gt;None&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Event name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;markerClick&lt;/td&gt;
+&lt;td&gt;Gets triggered when the user clicks the marker on the map&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 </description>
     </item>
     

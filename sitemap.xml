@@ -11,6 +11,10 @@
   </url>
   
   <url>
+    <loc>http://sebastianm.github.io/angular2-google-maps/</loc>
+  </url>
+  
+  <url>
     <loc>http://sebastianm.github.io/angular2-google-maps/getting-started/</loc>
   </url>
   
@@ -20,10 +24,6 @@
   
   <url>
     <loc>http://sebastianm.github.io/angular2-google-maps/api/components_directives/sebmGoogleMapMarker/</loc>
-  </url>
-  
-  <url>
-    <loc>http://sebastianm.github.io/angular2-google-maps/api/services/test/</loc>
   </url>
   
 </urlset>
