@@ -163,7 +163,12 @@
 </code></pre>
 
 <pre><code class="language-html">&lt;sebm-google-map [latitude]=&quot;lat&quot; [longitude]=&quot;lng&quot; [zoom]=&quot;zoom&quot;&gt;
-  &lt;sebm-google-map-marker [latitude]=&quot;lat&quot; [longitude]=&quot;lng&quot; [title]=&quot;title&quot; [label]=&quot;label&quot;&gt;&lt;/sebm-google-map-marker&gt;
+  &lt;sebm-google-map-marker 
+    [latitude]=&quot;lat&quot;
+    [longitude]=&quot;lng&quot;
+    [title]=&quot;title&quot;
+    [label]=&quot;label&quot;
+    (markerClick)=&quot;clicked()&quot;&gt;&lt;/sebm-google-map-marker&gt;
 &lt;/sebm-google-map&gt;
 </code></pre>
 

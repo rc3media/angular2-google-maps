@@ -104,7 +104,12 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;sebm-google-map [latitude]=&amp;quot;lat&amp;quot; [longitude]=&amp;quot;lng&amp;quot; [zoom]=&amp;quot;zoom&amp;quot;&amp;gt;
-  &amp;lt;sebm-google-map-marker [latitude]=&amp;quot;lat&amp;quot; [longitude]=&amp;quot;lng&amp;quot; [title]=&amp;quot;title&amp;quot; [label]=&amp;quot;label&amp;quot;&amp;gt;&amp;lt;/sebm-google-map-marker&amp;gt;
+  &amp;lt;sebm-google-map-marker 
+    [latitude]=&amp;quot;lat&amp;quot;
+    [longitude]=&amp;quot;lng&amp;quot;
+    [title]=&amp;quot;title&amp;quot;
+    [label]=&amp;quot;label&amp;quot;
+    (markerClick)=&amp;quot;clicked()&amp;quot;&amp;gt;&amp;lt;/sebm-google-map-marker&amp;gt;
 &amp;lt;/sebm-google-map&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
