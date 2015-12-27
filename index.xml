@@ -52,10 +52,14 @@
 &lt;p&gt;This package contains different sources for different users:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;The files under &lt;code&gt;/cjs&lt;/code&gt; are ES5 compatible files that can be consumed using CommonJS.&lt;/li&gt;
-&lt;li&gt;The files under &lt;code&gt;/es6&lt;/code&gt; are ES6 compatible files that can be transpiled to ES5 using any transpiler.&lt;/li&gt;
+&lt;li&gt;The files located in the root dir are ES5 compatible files that can be consumed using CommonJS.&lt;/li&gt;
+&lt;li&gt;The files under &lt;code&gt;/es6&lt;/code&gt; are ES6 compatible files that can be transpiled to E5 using any transpiler.&lt;/li&gt;
 &lt;li&gt;The files under &lt;code&gt;/ts&lt;/code&gt; are the TypeScript source files.&lt;/li&gt;
-&lt;li&gt;The files under &lt;code&gt;/typings&lt;/code&gt; are the Typescript type definition files for this package, useful for local typescript development.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;/bundles&lt;/code&gt; directory contains the following files:
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;angular2-google-maps.js&lt;/code&gt; and &lt;code&gt;angular2-google-maps.min.js&lt;/code&gt; are bundles that can be consumed using SystemJS.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
@@ -75,10 +79,10 @@
 
 &lt;h3 id=&#34;usage:1d20b80e8fb09d9d7430221023c052ad&#34;&gt;Usage&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;import {SebmGoogleMap} from &#39;angular2_google_maps/angular2_google_maps&#39;;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;import {SebmGoogleMap} from &#39;angular2-google-maps/core&#39;;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;sebm-google-map [latitude]=&amp;quot;lat&amp;quot; [longitude]=&amp;quot;lng&amp;quot; [zoom]=&amp;quot;zoom&amp;quot;&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;sebm-google-map [latitude]=&amp;quot;lat&amp;quot; [longitude]=&amp;quot;lng&amp;quot; [zoom]=&amp;quot;zoom&amp;quot; (mapClick)=&amp;quot;mapClicked($event)&amp;quot;&amp;gt;
 &amp;lt;/sebm-google-map&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -100,7 +104,7 @@
 &lt;td&gt;latitude&lt;/td&gt;
 &lt;td&gt;number&lt;/td&gt;
 &lt;td&gt;yes&lt;/td&gt;
-&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;The latitude for the center of the map&lt;/td&gt;
 &lt;/tr&gt;
 
@@ -108,7 +112,7 @@
 &lt;td&gt;longitude&lt;/td&gt;
 &lt;td&gt;number&lt;/td&gt;
 &lt;td&gt;yes&lt;/td&gt;
-&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;The longitude for the center of the map&lt;/td&gt;
 &lt;/tr&gt;
 
@@ -116,15 +120,60 @@
 &lt;td&gt;zoom&lt;/td&gt;
 &lt;td&gt;number&lt;/td&gt;
 &lt;td&gt;no&lt;/td&gt;
-&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;8&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;The initial zoom level of the map&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;disableDoubleClickZoom&lt;/td&gt;
+&lt;td&gt;boolean&lt;/td&gt;
+&lt;td&gt;no&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Enables/disables zoom and center on double click.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
 &lt;h3 id=&#34;events:1d20b80e8fb09d9d7430221023c052ad&#34;&gt;Events&lt;/h3&gt;
 
-&lt;p&gt;None&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Event name&lt;/th&gt;
+&lt;th&gt;Arguments&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;mapClick&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#MapMouseEvent&#34;&gt;MapMouseEvent&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Gets emitted when the user clicks on the map&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;mapRightClick&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#MapMouseEvent&#34;&gt;MapMouseEvent&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Gets emitted when the user uses a right click on the map.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;mapDblClick&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#MapMouseEvent&#34;&gt;MapMouseEvent&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Gets emitted when the user double-clicks on the map.  Note that the &lt;code&gt;mapClick&lt;/code&gt; event emitter will also fire, right before this one.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;event-interfaces:1d20b80e8fb09d9d7430221023c052ad&#34;&gt;Event Interfaces&lt;/h3&gt;
+
+&lt;h4 id=&#34;mapmouseevent-a-name-mapclickevent-a:1d20b80e8fb09d9d7430221023c052ad&#34;&gt;MapMouseEvent &lt;a name=&#34;mapClickEvent&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;interface MapMouseEvent {
+  coords: LatLngLiteral // { lat: number, lng: number }
+}; 
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -143,7 +192,7 @@
 
 &lt;h3 id=&#34;usage:702244f91fa43959b65f80946457d311&#34;&gt;Usage&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;import {SebmGoogleMap, SebmGoogleMapMarker} from &#39;angular2_google_maps/angular2_google_maps&#39;;
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;import {SebmGoogleMap, SebmGoogleMapMarker} from &#39;angular2-google-maps/core&#39;;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;sebm-google-map [latitude]=&amp;quot;lat&amp;quot; [longitude]=&amp;quot;lng&amp;quot; [zoom]=&amp;quot;zoom&amp;quot;&amp;gt;

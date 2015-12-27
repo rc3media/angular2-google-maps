@@ -96,10 +96,10 @@
 
 <h3 id="usage:1d20b80e8fb09d9d7430221023c052ad">Usage</h3>
 
-<pre><code class="language-typescript">import {SebmGoogleMap} from 'angular2_google_maps/angular2_google_maps';
+<pre><code class="language-typescript">import {SebmGoogleMap} from 'angular2-google-maps/core';
 </code></pre>
 
-<pre><code class="language-html">&lt;sebm-google-map [latitude]=&quot;lat&quot; [longitude]=&quot;lng&quot; [zoom]=&quot;zoom&quot;&gt;
+<pre><code class="language-html">&lt;sebm-google-map [latitude]=&quot;lat&quot; [longitude]=&quot;lng&quot; [zoom]=&quot;zoom&quot; (mapClick)=&quot;mapClicked($event)&quot;&gt;
 &lt;/sebm-google-map&gt;
 </code></pre>
 
@@ -121,7 +121,7 @@
 <td>latitude</td>
 <td>number</td>
 <td>yes</td>
-<td>0</td>
+<td><code>0</code></td>
 <td>The latitude for the center of the map</td>
 </tr>
 
@@ -129,7 +129,7 @@
 <td>longitude</td>
 <td>number</td>
 <td>yes</td>
-<td>0</td>
+<td><code>0</code></td>
 <td>The longitude for the center of the map</td>
 </tr>
 
@@ -137,15 +137,60 @@
 <td>zoom</td>
 <td>number</td>
 <td>no</td>
-<td>8</td>
+<td><code>8</code></td>
 <td>The initial zoom level of the map</td>
+</tr>
+
+<tr>
+<td>disableDoubleClickZoom</td>
+<td>boolean</td>
+<td>no</td>
+<td><code>false</code></td>
+<td>Enables/disables zoom and center on double click.</td>
 </tr>
 </tbody>
 </table>
 
 <h3 id="events:1d20b80e8fb09d9d7430221023c052ad">Events</h3>
 
-<p>None</p>
+<table>
+<thead>
+<tr>
+<th>Event name</th>
+<th>Arguments</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>mapClick</td>
+<td><a href="#MapMouseEvent">MapMouseEvent</a></td>
+<td>Gets emitted when the user clicks on the map</td>
+</tr>
+
+<tr>
+<td>mapRightClick</td>
+<td><a href="#MapMouseEvent">MapMouseEvent</a></td>
+<td>Gets emitted when the user uses a right click on the map.</td>
+</tr>
+
+<tr>
+<td>mapDblClick</td>
+<td><a href="#MapMouseEvent">MapMouseEvent</a></td>
+<td>Gets emitted when the user double-clicks on the map.  Note that the <code>mapClick</code> event emitter will also fire, right before this one.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="event-interfaces:1d20b80e8fb09d9d7430221023c052ad">Event Interfaces</h3>
+
+<h4 id="mapmouseevent-a-name-mapclickevent-a:1d20b80e8fb09d9d7430221023c052ad">MapMouseEvent <a name="mapClickEvent"></a></h4>
+
+<pre><code class="language-typescript">interface MapMouseEvent {
+  coords: LatLngLiteral // { lat: number, lng: number }
+}; 
+</code></pre>
 
                 <hr />
             
@@ -159,7 +204,7 @@
 
 <h3 id="usage:702244f91fa43959b65f80946457d311">Usage</h3>
 
-<pre><code class="language-typescript">import {SebmGoogleMap, SebmGoogleMapMarker} from 'angular2_google_maps/angular2_google_maps';
+<pre><code class="language-typescript">import {SebmGoogleMap, SebmGoogleMapMarker} from 'angular2-google-maps/core';
 </code></pre>
 
 <pre><code class="language-html">&lt;sebm-google-map [latitude]=&quot;lat&quot; [longitude]=&quot;lng&quot; [zoom]=&quot;zoom&quot;&gt;
