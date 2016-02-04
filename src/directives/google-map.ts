@@ -47,7 +47,7 @@ import {LatLng, LatLngLiteral} from '../services/google-maps-types';
     }
   `
   ],
-  inputs: ['longitude', 'latitude', 'zoom', 'disableDoubleClickZoom'],
+  inputs: ['longitude', 'latitude', 'zoom', 'disableDoubleClickZoom', 'mapTypeId', 'disableDefaultUI'],
   outputs: ['mapClick', 'mapRightClick', 'mapDblClick'],
   template: `
     <div class="sebm-google-map-container-inner"></div>
@@ -59,12 +59,17 @@ export class SebmGoogleMap implements OnChanges,
   private _longitude: number = 0;
   private _latitude: number = 0;
   private _zoom: number = 8;
+  private _mapTypeId: string;
+  private _disableDefaultUI: boolean =  false;
   /**
    * Enables/disables zoom and center on double click. Enabled by default.
    */
   disableDoubleClickZoom: boolean = false;
 
-  private static _mapOptionsAttributes: string[] = ['disableDoubleClickZoom'];
+  private static _mapOptionsAttributes: string[] = [
+    'disableDoubleClickZoom',
+    'disableDefaultUI'
+  ];
 
   /**
    * This event emitter gets emitted when the user clicks on the map (but not when they click on a
@@ -97,7 +102,11 @@ export class SebmGoogleMap implements OnChanges,
 
   private _initMapInstance(el: HTMLElement) {
     this._mapsWrapper.createMap(
-        el, {center: {lat: this._latitude, lng: this._longitude}, zoom: this._zoom});
+        el, {
+        center: {lat: this._latitude, lng: this._longitude},
+        zoom: this._zoom,
+        disableDefaultUI: this._disableDefaultUI
+      });
     this._handleMapCenterChange();
     this._handleMapZoomChange();
     this._handleMapMouseEvents();
@@ -105,13 +114,19 @@ export class SebmGoogleMap implements OnChanges,
 
   private static _containsMapOptionsChange(changesKeys: string[]): boolean {
     return changesKeys.every(
-        (key: string) => { return SebmGoogleMap._mapOptionsAttributes.indexOf(key) !== 1; });
+        (key: string) => {
+          return SebmGoogleMap._mapOptionsAttributes.indexOf(key) !== 1;
+        }
+    );
   }
 
   /** @internal */
   ngOnChanges(changes: {[propName: string]: SimpleChange}) {
     if (SebmGoogleMap._containsMapOptionsChange(Object.keys(changes))) {
-      this._mapsWrapper.setMapOptions({disableDoubleClickZoom: this.disableDoubleClickZoom});
+      this._mapsWrapper.setMapOptions({
+        disableDoubleClickZoom: this.disableDoubleClickZoom,
+        disableDefaultUI : this._disableDefaultUI
+      });
     }
   }
 
@@ -139,6 +154,16 @@ export class SebmGoogleMap implements OnChanges,
   set latitude(value: number | string) {
     this._latitude = this._convertToDecimal(value);
     this._updateCenter();
+  }
+
+  set mapTypeId(value: string) {
+    this._mapTypeId = value;
+    this._mapsWrapper.setMapTypeId(value);
+  }
+
+  set disableDefaultUI(value: boolean){
+    console.log("disable default ui set to :" + value);
+    this._disableDefaultUI = value;
   }
 
   private _convertToDecimal(value: string | number, defaultValue: number = null): number {

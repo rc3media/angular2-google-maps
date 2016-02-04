@@ -1,6 +1,6 @@
 import {Directive, SimpleChange, OnDestroy, OnChanges, EventEmitter} from 'angular2/core';
 import {MarkerManager} from '../services/marker-manager';
-
+import {Icon} from '../services/google-maps-types'
 let markerId = 0;
 
 /**
@@ -55,6 +55,8 @@ export class SebmGoogleMapMarker implements OnDestroy,
    */
   label: string;
 
+  icon: Icon;
+
   /**
    * This event emitter gets emitted when the user clicks on the marker.
    */
@@ -82,6 +84,9 @@ export class SebmGoogleMapMarker implements OnDestroy,
     }
     if (changes['label']) {
       this._markerManager.updateLabel(this);
+    }
+    if(changes['icon']){
+      this._markerManager.updateIcon(this);
     }
   }
 

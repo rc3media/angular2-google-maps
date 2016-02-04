@@ -31,6 +31,7 @@ export class GoogleMapsAPIWrapper {
   }
 
   setMapOptions(options: mapTypes.MapOptions) {
+    console.log(options);
     this._map.then((m: mapTypes.GoogleMap) => { m.setOptions(options); });
   }
 
@@ -65,5 +66,13 @@ export class GoogleMapsAPIWrapper {
 
   getCenter(): Promise<mapTypes.LatLng> {
     return this._map.then((map: mapTypes.GoogleMap) => map.getCenter());
+  }
+
+  setMapTypeId(id: string): Promise<void> {
+    return this._map.then((map: mapTypes.GoogleMap) => {
+      var mapId = google.maps.MapTypeId[id];
+      console.log("setting google map type id" + mapId);
+      map.setMapTypeId(mapId);
+    });
   }
 }

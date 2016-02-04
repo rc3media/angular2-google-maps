@@ -35,6 +35,12 @@ export class MarkerManager {
     });
   }
 
+  updateIcon(marker: SebmGoogleMapMarker): Promise<void> {
+    return this._markers.get(marker).then((m:Marker) => {
+      m.setIcon(marker.icon);
+    });
+  }
+
   addMarker(marker: SebmGoogleMapMarker) {
     const markerPromise = this._mapsWrapper.createMarker(
         {position: {lat: marker.latitude, lng: marker.longitude}, label: marker.label});
