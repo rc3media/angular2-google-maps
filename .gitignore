@@ -3,3 +3,4 @@ dist
 docs_generated
 src/**/*.js
 src/**/*.map
+.idea/
