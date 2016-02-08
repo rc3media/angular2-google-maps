@@ -5,6 +5,6 @@ gulp.task('connect', function connect() {
   $.connect.server({
     root: './dist/bundles/',
     livereload: true,
-    port: 9090
+    port: 9090,
   });
 });
