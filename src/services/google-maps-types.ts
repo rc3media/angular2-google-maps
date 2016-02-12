@@ -35,6 +35,7 @@ export interface MarkerOptions {
   title?: string;
   map?: GoogleMap;
   label?: string | MarkerLabel;
+  icon?: Icon;
 }
 
 export interface MarkerLabel {
@@ -81,25 +82,25 @@ export interface MapOptions {
   mapMaker?: boolean;
   mapTypeControl?: boolean;
   mapTypeControlOptions?: boolean;
-  //mapTypeId?: MapTypeId;
+  // mapTypeId?: MapTypeId;
   maxZoom?: number;
   minZoom?: number;
   noClear?: boolean;
   overviewMapControl?: boolean;
-  //overviewMapControlOptions?: OverviewMapControlOptions;
+  // overviewMapControlOptions?: OverviewMapControlOptions;
   panControl?: boolean;
-  //panControlOptions?: PanControlOptions;
+  // panControlOptions?: PanControlOptions;
   rotateControl?: boolean;
   rotateControlOptions?: boolean;
   scaleControl?: boolean;
-  //scaleControlOptions?: ScaleControlOptions;
+  // scaleControlOptions?: ScaleControlOptions;
   scrollwheel?: boolean;
-  //streetView?: StreetViewPanorama;
+  // streetView?: StreetViewPanorama;
   streetViewControl?: boolean;
-  //streetViewControlOptions?: streetViewControlOptions;
-  //styles?: MapTypeStyle[];
+  // streetViewControlOptions?: streetViewControlOptions;
+  // styles?: MapTypeStyle[];
   tilt?: number;
   zoom?: number;
   zoomControl?: boolean;
-  //zoomControlOptions?:  ZoomControlOptions;
+  // zoomControlOptions?:  ZoomControlOptions;
 }
