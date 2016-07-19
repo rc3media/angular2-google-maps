@@ -4,3 +4,4 @@ docs_generated
 src/**/*.js
 src/**/*.map
 .idea/
+.DS_Store

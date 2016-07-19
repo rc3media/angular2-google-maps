@@ -19,8 +19,12 @@ export class MarkerManager {
   }
 
   updateMarkerPosition(marker: SebmGoogleMapMarker): Promise<void> {
-    return this._markers.get(marker)
-        .then((m: Marker) => m.setPosition({lat: marker.latitude, lng: marker.longitude}));
+    console.log("update marker position");
+    console.log(this._markers.get(marker));
+    return this._markers.get(marker).then((m: Marker) => {
+      console.log(m);
+      m.setPosition({lat: marker.latitude, lng: marker.longitude});
+    });
   }
 
   updateTitle(marker: SebmGoogleMapMarker): Promise<void> {
