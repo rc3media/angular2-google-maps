@@ -77,10 +77,13 @@ export function main() {
                  draggable: false,
                  icon: undefined
                });
-               const iconUrl = 'http://angular-maps.com/icon.png';
-               newMarker.iconUrl = iconUrl;
+               const icon = {
+                 'url': 'http://angular-maps.com/icon.png',
+
+               };
+               newMarker.icon = icon;
                return markerManager.updateIcon(newMarker).then(
-                   () => { expect(markerInstance.setIcon).toHaveBeenCalledWith(iconUrl); });
+                   () => { expect(markerInstance.setIcon).toHaveBeenCalledWith(icon); });
              })));
     });
   });

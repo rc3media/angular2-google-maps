@@ -13,6 +13,8 @@
         "node_modules",
         "gulp",
         "dist",
-        "assets"
+        "assets",
+        "typings/main.d.ts",
+        "typings/main"
     ]
 }
