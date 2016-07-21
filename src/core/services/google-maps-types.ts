@@ -11,6 +11,7 @@ export interface GoogleMap extends MVCObject {
   setOptions(options: MapOptions): void;
   panToBounds(latLngBounds: LatLngBounds|LatLngBoundsLiteral): void;
   fitBounds(bounds: LatLngBounds|LatLngBoundsLiteral): void;
+  setMapTypeId(mapTypeId: string): void;
 }
 
 export interface LatLng {
@@ -20,13 +21,15 @@ export interface LatLng {
 }
 
 export interface Marker extends MVCObject {
+  icon: Icon;
   constructor(options?: MarkerOptions): void;
   setMap(map: GoogleMap): void;
   setPosition(latLng: LatLng|LatLngLiteral): void;
   setTitle(title: string): void;
   setLabel(label: string|MarkerLabel): void;
+  getLabel(): MarkerLabel;
   setDraggable(draggable: boolean): void;
-  setIcon(icon: string): void;
+  setIcon(icon: string|Icon): void;
   getLabel(): MarkerLabel;
 }
 
@@ -36,7 +39,7 @@ export interface MarkerOptions {
   map?: GoogleMap;
   label?: string|MarkerLabel;
   draggable?: boolean;
-  icon?: string;
+  icon?: string|Icon;
 }
 
 export interface MarkerLabel {
@@ -113,17 +116,38 @@ export interface MouseEvent { latLng: LatLng; }
 
 export interface MapOptions {
   center?: LatLng|LatLngLiteral;
-  zoom?: number;
+  draggable?: boolean;
   disableDoubleClickZoom?: boolean;
   disableDefaultUI?: boolean;
   backgroundColor?: string;
   draggableCursor?: string;
   draggingCursor?: string;
+  heading?: number;
   keyboardShortcuts?: boolean;
-  zoomControl?: boolean;
+  mapMaker?: boolean;
+  mapTypeControl?: boolean;
+  mapTypeControlOptions?: boolean;
+  maxZoom?: number;
+  minZoom?: number;
+  noClear?: boolean;
+  overviewMapControl?: boolean;
+  panControl?: boolean;
+  rotateControl?: boolean;
+  rotateControlOptions?: boolean;
+  scrollwheel?: boolean;
   styles?: MapTypeStyle[];
   streetViewControl?: boolean;
   scaleControl?: boolean;
+  tilt?: number;
+  zoom?: number;
+  zoomControl?: boolean;
+  // mapTypeId?: MapTypeId;
+  // overviewMapControlOptions?: OverviewMapControlOptions;
+  // panControlOptions?: PanControlOptions;
+  // scaleControlOptions?: ScaleControlOptions;
+  // streetView?: StreetViewPanorama;
+  // streetViewControlOptions?: streetViewControlOptions;
+  // zoomControlOptions?:  ZoomControlOptions;
 }
 
 export interface MapTypeStyle {
@@ -179,6 +203,11 @@ export interface Size {
   toString(): string;
 }
 
+export interface Point {
+  x: number;
+  y: number;
+}
+
 export interface InfoWindowOptions {
   content?: string|Node;
   disableAutoPan?: boolean;
@@ -186,4 +215,13 @@ export interface InfoWindowOptions {
   pixelOffset?: Size;
   position?: LatLng|LatLngLiteral;
   zIndex?: number;
+}
+
+export interface Icon {
+  anchor: Point;
+  labelOrigin: Point;
+  origin: Point;
+  scaledSize: Size;
+  size: Size;
+  url: string;
 }

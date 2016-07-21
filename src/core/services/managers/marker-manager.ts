@@ -1,9 +1,7 @@
 import {Injectable, NgZone} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Observer} from 'rxjs/Observer';
-
 import {SebmGoogleMapMarker} from '../../directives/google-map-marker';
-
 import {GoogleMapsAPIWrapper} from './../google-maps-api-wrapper';
 import {Marker} from './../google-maps-types';
 
@@ -46,7 +44,7 @@ export class MarkerManager {
   }
 
   updateIcon(marker: SebmGoogleMapMarker): Promise<void> {
-    return this._markers.get(marker).then((m: Marker) => m.setIcon(marker.iconUrl));
+    return this._markers.get(marker).then((m: Marker) => { m.setIcon(marker.icon); });
   }
 
   addMarker(marker: SebmGoogleMapMarker) {
@@ -54,7 +52,7 @@ export class MarkerManager {
       position: {lat: marker.latitude, lng: marker.longitude},
       label: marker.label,
       draggable: marker.draggable,
-      icon: marker.iconUrl
+      icon: marker.icon,
     });
     this._markers.set(marker, markerPromise);
   }

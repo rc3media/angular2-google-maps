@@ -76,6 +76,8 @@ export class SebmGoogleMap implements OnChanges, OnInit {
    */
   zoom: number = 8;
 
+  mapTypeId: string;
+
   /**
    * Enables/disables zoom and center on double click. Enabled by default.
    */

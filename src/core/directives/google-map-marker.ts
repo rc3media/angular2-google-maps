@@ -1,7 +1,7 @@
 import {AfterContentInit, ContentChild, Directive, EventEmitter, OnChanges, OnDestroy, SimpleChange} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 
-import {MouseEvent} from '../map-types';
+import {Icon, MouseEvent} from '../map-types';
 import * as mapTypes from '../services/google-maps-types';
 import {MarkerManager} from '../services/managers/marker-manager';
 
@@ -37,7 +37,7 @@ let markerId = 0;
 @Directive({
   selector: 'sebm-google-map-marker',
   inputs: [
-    'latitude', 'longitude', 'title', 'label', 'draggable: markerDraggable', 'iconUrl',
+    'latitude', 'longitude', 'title', 'label', 'draggable: markerDraggable', 'icon',
     'openInfoWindow', 'fitBounds'
   ],
   outputs: ['markerClick', 'dragEnd']
@@ -69,9 +69,9 @@ export class SebmGoogleMapMarker implements OnDestroy, OnChanges, AfterContentIn
   draggable: boolean = false;
 
   /**
-   * Icon (the URL of the image) for the foreground.
+   * Icon
    */
-  iconUrl: string;
+  icon: Icon;
 
   /**
    * Whether to automatically open the child info window when the marker is clicked.
@@ -126,7 +126,7 @@ export class SebmGoogleMapMarker implements OnDestroy, OnChanges, AfterContentIn
     if (changes['draggable']) {
       this._markerManager.updateDraggable(this);
     }
-    if (changes['iconUrl']) {
+    if (changes['icon']) {
       this._markerManager.updateIcon(this);
     }
   }

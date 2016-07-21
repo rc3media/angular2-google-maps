@@ -112,7 +112,7 @@ export class GoogleMapsAPIWrapper {
   setMapTypeId(id: string): Promise<void> {
     return this._map.then((map: mapTypes.GoogleMap) => {
       var mapId = google.maps.MapTypeId[id];
-      console.log("setting google map type id" + mapId);
+      console.log('setting google map type id' + mapId);
       map.setMapTypeId(mapId);
     });
   }
