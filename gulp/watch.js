@@ -1,6 +1,10 @@
 const gulp = require('gulp');
 const config = require('./config');
 
-gulp.task('watch', function watch() {
-  gulp.watch(config.PATHS.tsSrcFiles, ['scripts:cjs', 'bundle:cjs']);
+gulp.task('watch:srcFiles', () => {
+  gulp.watch(config.PATHS.tsSrcFiles, ['scripts:cjs']);
+});
+
+gulp.task('watch:testfiles', () => {
+  gulp.watch(config.PATHS.tsTestFiles, ['scripts:test']);
 });

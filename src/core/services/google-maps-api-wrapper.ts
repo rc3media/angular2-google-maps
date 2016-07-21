@@ -1,9 +1,9 @@
-import {Injectable, NgZone} from 'angular2/core';
-import {Observer} from 'rxjs/Observer';
+import {Injectable, NgZone} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
+import {Observer} from 'rxjs/Observer';
 
-import {MapsAPILoader} from './maps-api-loader/maps-api-loader';
 import * as mapTypes from './google-maps-types';
+import {MapsAPILoader} from './maps-api-loader/maps-api-loader';
 
 // todo: add types for this
 declare var google: any;
@@ -31,7 +31,6 @@ export class GoogleMapsAPIWrapper {
   }
 
   setMapOptions(options: mapTypes.MapOptions) {
-    console.log(options);
     this._map.then((m: mapTypes.GoogleMap) => { m.setOptions(options); });
   }
 
@@ -43,6 +42,20 @@ export class GoogleMapsAPIWrapper {
     return this._map.then((map: mapTypes.GoogleMap) => {
       options.map = map;
       return new google.maps.Marker(options);
+    });
+  }
+
+  createInfoWindow(options?: mapTypes.InfoWindowOptions): Promise<mapTypes.InfoWindow> {
+    return this._map.then(() => { return new google.maps.InfoWindow(options); });
+  }
+
+  /**
+   * Creates a google.map.Circle for the current map.
+   */
+  createCircle(options: mapTypes.CircleOptions): Promise<mapTypes.Circle> {
+    return this._map.then((map: mapTypes.GoogleMap) => {
+      options.map = map;
+      return new google.maps.Circle(options);
     });
   }
 
@@ -60,12 +73,40 @@ export class GoogleMapsAPIWrapper {
 
   getZoom(): Promise<number> { return this._map.then((map: mapTypes.GoogleMap) => map.getZoom()); }
 
+  getBounds(): Promise<mapTypes.LatLngBounds> {
+    return this._map.then((map: mapTypes.GoogleMap) => map.getBounds());
+  }
+
   setZoom(zoom: number): Promise<void> {
     return this._map.then((map: mapTypes.GoogleMap) => map.setZoom(zoom));
   }
 
   getCenter(): Promise<mapTypes.LatLng> {
     return this._map.then((map: mapTypes.GoogleMap) => map.getCenter());
+  }
+
+  panTo(latLng: mapTypes.LatLng|mapTypes.LatLngLiteral): Promise<void> {
+    return this._map.then((map) => map.panTo(latLng));
+  }
+
+  fitBounds(latLng: mapTypes.LatLngBounds|mapTypes.LatLngBoundsLiteral): Promise<void> {
+    return this._map.then((map) => map.fitBounds(latLng));
+  }
+
+  panToBounds(latLng: mapTypes.LatLngBounds|mapTypes.LatLngBoundsLiteral): Promise<void> {
+    return this._map.then((map) => map.panToBounds(latLng));
+  }
+
+  /**
+   * Returns the native Google Maps Map instance. Be careful when using this instance directly.
+   */
+  getNativeMap(): Promise<mapTypes.GoogleMap> { return this._map; }
+
+  /**
+   * Triggers the given event name on the map instance.
+   */
+  triggerMapEvent(eventName: string): Promise<void> {
+    return this._map.then((m) => google.maps.event.trigger(m, eventName));
   }
 
   setMapTypeId(id: string): Promise<void> {
