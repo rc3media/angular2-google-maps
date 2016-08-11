@@ -29,7 +29,13 @@ export interface Marker extends MVCObject {
   setLabel(label: string|MarkerLabel): void;
   getLabel(): MarkerLabel;
   setDraggable(draggable: boolean): void;
+<<<<<<< HEAD
   setIcon(icon: string|Icon): void;
+=======
+  setIcon(icon: string): void;
+  setOpacity(opacity: number): void;
+  setVisible(visible: boolean): void;
+>>>>>>> f8a6553ea34a736c0e56e080c35a5980f7b34244
   getLabel(): MarkerLabel;
 }
 
@@ -39,7 +45,13 @@ export interface MarkerOptions {
   map?: GoogleMap;
   label?: string|MarkerLabel;
   draggable?: boolean;
+<<<<<<< HEAD
   icon?: string|Icon;
+=======
+  icon?: string;
+  opacity?: number;
+  visible?: boolean;
+>>>>>>> f8a6553ea34a736c0e56e080c35a5980f7b34244
 }
 
 export interface MarkerLabel {
