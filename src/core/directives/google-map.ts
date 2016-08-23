@@ -8,6 +8,7 @@ import {LatLngBounds, LatLngBoundsLiteral, MapTypeStyle} from '../services/googl
 import {CircleManager} from '../services/managers/circle-manager';
 import {InfoWindowManager} from '../services/managers/info-window-manager';
 import {MarkerManager} from '../services/managers/marker-manager';
+import {PolylineManager} from '../services/managers/polyline-manager';
 
 /**
  * SebMGoogleMap renders a Google Map.
@@ -36,13 +37,17 @@ import {MarkerManager} from '../services/managers/marker-manager';
  */
 @Component({
   selector: 'sebm-google-map',
-  providers: [GoogleMapsAPIWrapper, MarkerManager, InfoWindowManager, CircleManager],
+  providers:
+      [GoogleMapsAPIWrapper, MarkerManager, InfoWindowManager, CircleManager, PolylineManager],
   inputs: [
-    'longitude', 'latitude', 'zoom', 'disableDoubleClickZoom', 'disableDefaultUI', 'scrollwheel',
-    'backgroundColor', 'draggableCursor', 'draggingCursor', 'keyboardShortcuts', 'zoomControl',
-    'styles', 'usePanning', 'streetViewControl', 'fitBounds', 'scaleControl'
+    'longitude', 'latitude', 'zoom', 'draggable: mapDraggable', 'disableDoubleClickZoom',
+    'disableDefaultUI', 'scrollwheel', 'backgroundColor', 'draggableCursor', 'draggingCursor',
+    'keyboardShortcuts', 'zoomControl', 'styles', 'usePanning', 'streetViewControl', 'fitBounds',
+    'scaleControl'
   ],
-  outputs: ['mapClick', 'mapRightClick', 'mapDblClick', 'centerChange', 'idle', 'boundsChange'],
+  outputs: [
+    'mapClick', 'mapRightClick', 'mapDblClick', 'centerChange', 'idle', 'boundsChange', 'zoomChange'
+  ],
   host: {'[class.sebm-google-map-container]': 'true'},
   styles: [`
     .sebm-google-map-container-inner {
@@ -77,6 +82,11 @@ export class SebmGoogleMap implements OnChanges, OnInit {
   zoom: number = 8;
 
   mapTypeId: string;
+
+  /**
+   * Enables/disables if map is draggable.
+   */
+  draggable: boolean = true;
 
   /**
    * Enables/disables zoom and center on double click. Enabled by default.
@@ -161,7 +171,7 @@ export class SebmGoogleMap implements OnChanges, OnInit {
    * Map option attributes that can change over time
    */
   private static _mapOptionsAttributes: string[] = [
-    'disableDoubleClickZoom', 'scrollwheel', 'draggableCursor', 'draggingCursor',
+    'disableDoubleClickZoom', 'scrollwheel', 'draggable', 'draggableCursor', 'draggingCursor',
     'keyboardShortcuts', 'zoomControl', 'styles', 'streetViewControl', 'zoom'
   ];
 
@@ -200,6 +210,11 @@ export class SebmGoogleMap implements OnChanges, OnInit {
    */
   idle: EventEmitter<void> = new EventEmitter<void>();
 
+  /**
+   * This event is fired when the zoom level has changed.
+   */
+  zoomChange: EventEmitter<number> = new EventEmitter<number>();
+
   constructor(private _elem: ElementRef, private _mapsWrapper: GoogleMapsAPIWrapper) {}
 
   /** @internal */
@@ -215,6 +230,7 @@ export class SebmGoogleMap implements OnChanges, OnInit {
       zoom: this.zoom,
       disableDefaultUI: this.disableDefaultUI,
       backgroundColor: this.backgroundColor,
+      draggable: this.draggable,
       draggableCursor: this.draggableCursor,
       draggingCursor: this.draggingCursor,
       keyboardShortcuts: this.keyboardShortcuts,
@@ -322,7 +338,10 @@ export class SebmGoogleMap implements OnChanges, OnInit {
 
   private _handleMapZoomChange() {
     const s = this._mapsWrapper.subscribeToMapEvent<void>('zoom_changed').subscribe(() => {
-      this._mapsWrapper.getZoom().then((z: number) => this.zoom = z);
+      this._mapsWrapper.getZoom().then((z: number) => {
+        this.zoom = z;
+        this.zoomChange.emit(z);
+      });
     });
     this._observableSubscriptions.push(s);
   }

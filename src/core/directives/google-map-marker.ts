@@ -38,7 +38,7 @@ let markerId = 0;
   selector: 'sebm-google-map-marker',
   inputs: [
     'latitude', 'longitude', 'title', 'label', 'draggable: markerDraggable', 'icon',
-    'openInfoWindow', 'fitBounds'
+    'openInfoWindow', 'fitBounds', 'opacity', 'visible', 'zIndex'
   ],
   outputs: ['markerClick', 'dragEnd']
 })
@@ -74,9 +74,27 @@ export class SebmGoogleMapMarker implements OnDestroy, OnChanges, AfterContentIn
   icon: Icon;
 
   /**
+   * If true, the marker is visible
+   */
+  visible: boolean = true;
+
+  /**
    * Whether to automatically open the child info window when the marker is clicked.
    */
   openInfoWindow: boolean = true;
+
+  /**
+   * The marker's opacity between 0.0 and 1.0.
+   */
+  opacity: number = 1;
+
+  /**
+   * All markers are displayed on the map in order of their zIndex, with higher values displaying in
+   * front of markers with lower values. By default, markers are displayed according to their
+   * vertical position on screen, with lower markers appearing in front of markers further up the
+   * screen.
+   */
+  zIndex: number = 1;
 
   /**
    * This event emitter gets emitted when the user clicks on the marker.
@@ -129,6 +147,15 @@ export class SebmGoogleMapMarker implements OnDestroy, OnChanges, AfterContentIn
     if (changes['icon']) {
       this._markerManager.updateIcon(this);
     }
+    if (changes['opacity']) {
+      this._markerManager.updateOpacity(this);
+    }
+    if (changes['visible']) {
+      this._markerManager.updateVisible(this);
+    }
+    if (changes['zIndex']) {
+      this._markerManager.updateZIndex(this);
+    }
   }
 
   private _addEventListeners() {
@@ -140,10 +167,11 @@ export class SebmGoogleMapMarker implements OnDestroy, OnChanges, AfterContentIn
     });
     this._observableSubscriptions.push(cs);
 
-    const ds = this._markerManager.createEventObservable<mapTypes.MouseEvent>('dragend', this)
-                   .subscribe((e: mapTypes.MouseEvent) => {
-                     this.dragEnd.emit({coords: {lat: e.latLng.lat(), lng: e.latLng.lng()}});
-                   });
+    const ds =
+        this._markerManager.createEventObservable<mapTypes.MouseEvent>('dragend', this)
+            .subscribe((e: mapTypes.MouseEvent) => {
+              this.dragEnd.emit(<MouseEvent>{coords: {lat: e.latLng.lat(), lng: e.latLng.lng()}});
+            });
     this._observableSubscriptions.push(ds);
   }
 
