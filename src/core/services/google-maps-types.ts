@@ -21,7 +21,6 @@ export interface LatLng {
 }
 
 export interface Marker extends MVCObject {
-  icon: string|Icon;
   constructor(options?: MarkerOptions): void;
   setMap(map: GoogleMap): void;
   setPosition(latLng: LatLng|LatLngLiteral): void;
