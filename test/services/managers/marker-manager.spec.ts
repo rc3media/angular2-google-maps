@@ -81,9 +81,16 @@ export function main() {
                  opacity: 1,
                  visible: true
                });
+               
+               const testSize = jasmine.createSpyObj("Size", ["equals","toString"])
+              
                const icon = {
                  'url': 'http://angular-maps.com/icon.png',
-
+                 "anchor": {"x":0,"y":0}, 
+                  "labelOrigin": {"x":0,"y":0},
+                  "origin": {"x":0,"y":0},
+                  "scaledSize": testSize,
+                  "size": testSize,
                };
                newMarker.icon = icon;
                return markerManager.updateIcon(newMarker).then(
