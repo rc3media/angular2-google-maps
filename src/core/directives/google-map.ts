@@ -8,6 +8,7 @@ import {LatLngBounds, LatLngBoundsLiteral, MapTypeStyle} from '../services/googl
 import {CircleManager} from '../services/managers/circle-manager';
 import {InfoWindowManager} from '../services/managers/info-window-manager';
 import {MarkerManager} from '../services/managers/marker-manager';
+import {PolylineManager} from '../services/managers/polyline-manager';
 
 /**
  * SebMGoogleMap renders a Google Map.
@@ -36,11 +37,13 @@ import {MarkerManager} from '../services/managers/marker-manager';
  */
 @Component({
   selector: 'sebm-google-map',
-  providers: [GoogleMapsAPIWrapper, MarkerManager, InfoWindowManager, CircleManager],
+  providers:
+      [GoogleMapsAPIWrapper, MarkerManager, InfoWindowManager, CircleManager, PolylineManager],
   inputs: [
-    'longitude', 'latitude', 'zoom', 'disableDoubleClickZoom', 'disableDefaultUI', 'scrollwheel',
-    'backgroundColor', 'draggableCursor', 'draggingCursor', 'keyboardShortcuts', 'zoomControl',
-    'styles', 'usePanning', 'streetViewControl', 'fitBounds', 'scaleControl'
+    'longitude', 'latitude', 'zoom', 'draggable: mapDraggable', 'disableDoubleClickZoom',
+    'disableDefaultUI', 'scrollwheel', 'backgroundColor', 'draggableCursor', 'draggingCursor',
+    'keyboardShortcuts', 'zoomControl', 'styles', 'usePanning', 'streetViewControl', 'fitBounds',
+    'scaleControl'
   ],
   outputs: [
     'mapClick', 'mapRightClick', 'mapDblClick', 'centerChange', 'idle', 'boundsChange', 'zoomChange'
@@ -79,6 +82,11 @@ export class SebmGoogleMap implements OnChanges, OnInit {
   zoom: number = 8;
 
   mapTypeId: string;
+
+  /**
+   * Enables/disables if map is draggable.
+   */
+  draggable: boolean = true;
 
   /**
    * Enables/disables zoom and center on double click. Enabled by default.
@@ -163,7 +171,7 @@ export class SebmGoogleMap implements OnChanges, OnInit {
    * Map option attributes that can change over time
    */
   private static _mapOptionsAttributes: string[] = [
-    'disableDoubleClickZoom', 'scrollwheel', 'draggableCursor', 'draggingCursor',
+    'disableDoubleClickZoom', 'scrollwheel', 'draggable', 'draggableCursor', 'draggingCursor',
     'keyboardShortcuts', 'zoomControl', 'styles', 'streetViewControl', 'zoom'
   ];
 
@@ -222,6 +230,7 @@ export class SebmGoogleMap implements OnChanges, OnInit {
       zoom: this.zoom,
       disableDefaultUI: this.disableDefaultUI,
       backgroundColor: this.backgroundColor,
+      draggable: this.draggable,
       draggableCursor: this.draggableCursor,
       draggingCursor: this.draggingCursor,
       keyboardShortcuts: this.keyboardShortcuts,

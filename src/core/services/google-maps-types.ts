@@ -31,6 +31,7 @@ export interface Marker extends MVCObject {
   setIcon(icon: string|Icon): void;
   setOpacity(opacity: number): void;
   setVisible(visible: boolean): void;
+  setZIndex(zIndex: number): void;
   getLabel(): MarkerLabel;
 }
 
@@ -43,6 +44,7 @@ export interface MarkerOptions {
   icon?: string|Icon;
   opacity?: number;
   visible?: boolean;
+  zIndex?: number;
 }
 
 export interface MarkerLabel {
@@ -119,10 +121,10 @@ export interface MouseEvent { latLng: LatLng; }
 
 export interface MapOptions {
   center?: LatLng|LatLngLiteral;
-  draggable?: boolean;
   disableDoubleClickZoom?: boolean;
   disableDefaultUI?: boolean;
   backgroundColor?: string;
+  draggable?: boolean;
   draggableCursor?: string;
   draggingCursor?: string;
   heading?: number;
@@ -206,10 +208,6 @@ export interface Size {
   toString(): string;
 }
 
-export interface Point {
-  x: number;
-  y: number;
-}
 
 export interface InfoWindowOptions {
   content?: string|Node;
@@ -227,4 +225,69 @@ export interface Icon {
   scaledSize: Size;
   size: Size;
   url: string;
+}
+
+export interface Point {
+  x: number;
+  y: number;
+  equals(other: Point): boolean;
+  toString(): string;
+}
+
+export interface GoogleSymbol {
+  anchor?: Point;
+  fillColor?: string;
+  fillOpacity?: string;
+  labelOrigin?: Point;
+  path?: string;
+  rotation?: number;
+  scale?: number;
+  strokeColor?: string;
+  strokeOpacity?: number;
+  strokeWeight?: number;
+}
+
+export interface IconSequence {
+  fixedRotation?: boolean;
+  icon?: GoogleSymbol;
+  offset?: string;
+  repeat?: string;
+}
+
+export interface PolylineOptions {
+  clickable?: boolean;
+  draggable?: boolean;
+  editable?: boolean;
+  geodesic?: boolean;
+  icon?: Array<IconSequence>;
+  map?: GoogleMap;
+  path?: Array<LatLng>|Array<LatLng|LatLngLiteral>;
+  strokeColor?: string;
+  strokeOpacity?: number;
+  strokeWeight?: number;
+  visible?: boolean;
+  zIndex?: number;
+}
+
+export interface Polyline extends MVCObject {
+  getDraggable(): boolean;
+  getEditable(): boolean;
+  getMap(): GoogleMap;
+  getPath(): Array<LatLng>;
+  getVisible(): boolean;
+  setDraggable(draggable: boolean): void;
+  setEditable(editable: boolean): void;
+  setMap(map: GoogleMap): void;
+  setOptions(options: PolylineOptions): void;
+  setPath(path: Array<LatLng|LatLngLiteral>): void;
+  setVisible(visible: boolean): void;
+}
+
+/**
+ * PolyMouseEvent gets emitted when the user triggers mouse events on a polyline.
+ */
+export interface PolyMouseEvent extends MouseEvent {
+  edge: number;
+  path: number;
+  vertex: number;
 }
